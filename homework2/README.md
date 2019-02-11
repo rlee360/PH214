@@ -1,6 +1,6 @@
 ## Instructions
 
-A python3 virtualenv is used, preferably: https://packaging.python.org/guides/installing-using-pip-and-virtualenv/
+A python3 venv should be used, preferably: https://docs.python.org/3.6/library/venv.html
 
 Once that is installed:
 
