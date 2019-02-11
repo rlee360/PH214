@@ -5,14 +5,19 @@ from matplotlib.lines import Line2D
 from matplotlib import rc
 rc('text', usetex=True)
 
+import matplotlib as mpl
+
+mpl.rcParams['grid.color'] = 'k'
+mpl.rcParams['grid.linestyle'] = '-'
+mpl.rcParams['grid.linewidth'] = 0.5
+
 #defining arrow plotter - requires that ax be defined, e.g: ax = plt.subplot(111, projection='polar')
 def vectArrow(x0, y0, xEnd, yEnd, faceColor, edgeColor):
     ax.annotate("", xytext=(x0,y0), xy=(xEnd,yEnd), arrowprops=dict(facecolor=faceColor, ec=edgeColor,alpha=0.5))
     
 def vectEx(xPoint, yPoint, size, color):
     factor = 15
-    plt.plot(xPoint, yPoint, marker=r'$\bigotimes$', markersize=size, markeredgewidth=0.3, markeredgecolor=color, markerfacecolor='k')
-    #old code to generate vector into the page
+    plt.plot(xPoint, yPoint, marker=r'$\bigotimes$', markersize=size, markeredgewidth=0.05, markeredgecolor=color, markerfacecolor='k')
     #plt.plot(xPoint, yPoint, 'o', markersize=size, markeredgewidth=5, markeredgecolor=color, markerfacecolor='None')
     #plt.plot(xPoint, yPoint, 'x', markersize=size-factor, markeredgewidth=5, markeredgecolor=color, markerfacecolor='None')
 
@@ -75,6 +80,11 @@ legend_elements = [Patch(facecolor='red', edgecolor='black',
                           markerfacecolor='k', markersize=30, markeredgewidth=0.3, markeredgecolor='white')]
                           
 ax.legend(handles=legend_elements, loc='upper left', bbox_to_anchor=(-0.4, 1.05), ncol=1, fancybox=True, shadow=True, prop={'size': 50})
+
+ax.text(-0.41, 0.57, r"The magnitudes of the \textbf{B} \\ vectors are c (the speed of\\ light) times the magnitudes \\ of their respective \textbf{E} vectors.",
+        verticalalignment='bottom', horizontalalignment='left',
+        transform=ax.transAxes,
+        color='green', fontsize=40)
 
 plt.title(r"\textbf{E}, \textbf{S} and \textbf{B} as a function of $\theta$", fontsize=60)
 
